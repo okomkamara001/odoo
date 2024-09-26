@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record model="ir.ui.view" id="view_action_borrowed_tree">
+        <field name="name">view.books.data.tree</field>
+        <field name="model">books.borrows</field>
+        <field name="arch" type="xml">
+            <tree string="Borrows">
+                <field name="reference"/>
+                <field name="name_id"/>
+                <field name="book_id"/>
+                <field name="start_borrow"/>
+                <field name="email"/>
+                <field name="phone_number"/>
+                <field name="end_borrow"/>
+                <field name="daily_price" optional="hide"/>
+                <!--                <field name="category_ids"/>-->
+                <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                <field name="color" widget="color_picker"/>
+                <field name="duration"/>
+                <field name="received_date"/>
+                <field name="delay_duration"/>
+                <field name="borrows_duration"/>
+                <field name="sub_total"/>
+                <field name="total_money"/>
+                <!--                <field name="book_copy_list_id "/>-->
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_action_borrowed_form">
+        <field name="name">view.books.data.form</field>
+        <field name="model">books.borrows</field>
+        <field name="arch" type="xml">
+            <form string="Borrowers">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" invisible="state != 'draft'"
+                            class="oe_highlight"/>
+                    <button name="action_ongoing" type="object" string="Ongoing"
+                            invisible="state != 'confirmed'" class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Done"
+                            invisible="state != 'ongoing'" class="oe_highlight"/>
+                    <button name="action_cancel" type="object" string="Cancel"
+                            invisible="state == 'done'" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft, confirmed,ongoing,done"
+                           options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="reference" readonly="True"/>
+                            <field name="name_id"/>
+                            <field name="book_id"/>
+                            <field name="start_borrow"/>
+                            <field name="email"/>
+                            <field name="phone_number"/>
+                            <field name="sub_total"/>
+                            <field name="total_money"/>
+                        </group>
+                        <group>
+                            <field name="end_borrow"/>
+                            <!--                <field name="category_ids"/>-->
+                            <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                            <field name="daily_price" optional="hide"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="duration"/>
+                            <field name="received_date"/>
+                            <field name="delay_duration"/>
+                            <field name="borrows_duration"/>
+                        </group>
+                        <group>
+
+                            <!--                        <field name="book_copy_list_id "/>-->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Other Borrowers Info" string="Other Info">
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" group="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_borrowed" model="ir.actions.act_window">
+        <field name="name">Borrows</field>
+        <field name="res_model">books.borrows</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create books borrowers.
+            </p>
+        </field>
+    </record>
+</odoo>

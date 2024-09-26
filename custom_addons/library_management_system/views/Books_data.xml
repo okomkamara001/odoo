@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <record model="ir.ui.view" id="view_books_data_tree">
+        <field name="name">view.books.data.tree</field>
+        <field name="model">books.data</field>
+        <field name="arch" type="xml">
+            <tree string="Books">
+                <field name="name"/>
+                <field name="language"/>
+                <field name="description"/>
+                <field name="color" widget="color_picker"/>
+                <field name="price"/>
+                <field name="invoice" optional="hide"/>
+                <field name="version"/>
+                <field name="ispn" optional="hide"/>
+                <!--                <field name="category_ids"/>-->
+                <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                <field name="number_of_pages"/>
+                <field name="copy_count"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_books_data_form">
+        <field name="name">view.books.data.form</field>
+        <field name="model">books.data</field>
+        <field name="arch" type="xml">
+            <form string="Books">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_little">
+                        <h1>
+                            <field name="priority" widget="priority" class="mr_3"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="language"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="version"/>
+                            <field name="ispn"/>
+                            <!--                <field name="category_ids"/>-->
+                            <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                            <field name="number_of_pages"/>
+                            <field name="copy_count"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                        <group>
+                            <field name="price"/>
+                            <field name="invoice"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Book Copies">
+                            <field name="copy_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" group="base.group_user"/>
+                        <field name="message_ids"/>
+                    </div>
+                </group>
+            </form>
+        </field>
+    </record>
+    <record id="action_book_data" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">books.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Books
+            </p>
+        </field>
+    </record>
+</odoo>

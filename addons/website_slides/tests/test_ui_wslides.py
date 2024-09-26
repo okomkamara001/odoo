@@ -278,10 +278,10 @@ class TestPortalComposer(TestUICommon):
         """Check that the access token is returned when we upload an attachment."""
         self.authenticate('demo', 'demo')
         response = self.url_open('/portal/attachment/add', data={
-            'name': 'image.png',
+            'name': 'icon.png',
             'res_id': self.channel.id,
             'res_model': 'slide.channel',
             'csrf_token': http.WebRequest.csrf_token(self),
-        }, files={'file': ('image.png', '', 'image/png')})
+        }, files={'file': ('icon.png', '', 'image/png')})
         self.assertTrue(response.ok)
         self.assertTrue(response.json().get('access_token'))

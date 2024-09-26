@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <menuitem name="HMS" id="menu_root_hospital" web_icon="om_hospital,static/description/icon.png"/>
+        <menuitem name="Front Desk" id="menu_root_frontdesk" parent="menu_root_hospital"/>
+        <menuitem name="Billing" id="menu_billing" parent="menu_root_hospital"/>
+        <menuitem name="Patients" id="menu_patients" parent="menu_root_frontdesk" action="action_hospital_patient"/>
+        <menuitem name="View_Patients" id="menu_patients_readonly" parent="menu_root_frontdesk"
+                  action="action_hospital_readonly_patient"/>
+        <menuitem name="Appointments" id="menu_appointment" parent="menu_root_frontdesk"
+                  action="action_hospital_appointment"/>
+        <menuitem name="Appointment Line" id="menu_appointment_line" parent="menu_root_frontdesk"
+                  action="action_hospital_appointment_line"/>
+        <menuitem name="Configuration" id="menu_configuration" parent="menu_root_hospital" sequence="100"/>
+        <menuitem name="Tag" id="menu_patient_tag" parent="menu_configuration" action="action_patient_tag"
+                  sequence="100"/>
+        <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing" action="account.action_move_out_invoice_type"/>
+        <menuitem name="Payment" id="menu_hms_payment" parent="menu_billing" action="account.action_account_payments"/>
+    </data>
+</odoo>

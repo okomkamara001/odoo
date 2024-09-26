@@ -29,7 +29,7 @@ class WebsiteSnippetFilter(models.Model):
                 'display_name': _('Lamp'),
                 'description_sale': _('Lightbulb sold separately'),
             }, {
-                'image_512': b'/product/static/img/product_product_20-image.png',
+                'image_512': b'/product/static/img/product_product_20-icon.png',
                 'display_name': _('Whiteboard'),
                 'description_sale': _('With three feet'),
             }, {
@@ -37,7 +37,7 @@ class WebsiteSnippetFilter(models.Model):
                 'display_name': _('Drawer'),
                 'description_sale': _('On wheels'),
             }, {
-                'image_512': b'/product/static/img/product_product_7-image.png',
+                'image_512': b'/product/static/img/product_product_7-icon.png',
                 'display_name': _('Box'),
                 'description_sale': _('Reinforced for heavy loads'),
             }, {

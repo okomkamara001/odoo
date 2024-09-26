@@ -6967,7 +6967,7 @@ class BaseModel(metaclass=MetaModel):
     def _get_placeholder_filename(self, field):
         """ Returns the filename of the placeholder to use,
             set on web/static/img by default, or the
-            complete path to access it (eg: module/path/to/image.png).
+            complete path to access it (eg: module/path/to/icon.png).
         """
         return False
 

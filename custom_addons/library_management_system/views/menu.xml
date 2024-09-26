@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <menuitem name="Library" id="main_books_menu" web_icon="library_management_system,static/description/icon.png"/>
+        <menuitem name="Books Information" id="menu_1_books" parent="main_books_menu"/>
+        <menuitem name="Books" id="menu_2_information" parent="menu_1_books" action="action_book_data"/>
+        <menuitem name="Configuration" id="menu_1_setting" parent="main_books_menu" sequence="100">
+            <menuitem name="Author" id="menu_1_author" action="action1_author" sequence="0"/>
+        </menuitem>
+          <menuitem name="Billing" id="menu_billing" parent="main_books_menu" sequence="80"/>
+        <menuitem name="Borrows" id="menu_2_borrow" parent="main_books_menu" action="action_borrowed" sequence="10"/>
+        <menuitem name="Publisher" id="menu_1_publisher" parent="menu_1_setting" action="action2_publisher"
+                  sequence="30"/>
+        <menuitem name="Countries" id="menu_1_countries" parent="menu_1_setting" action="base.action_country"/>
+        <menuitem name="Currencies" id="menu_1_currencies" parent="menu_billing" action="base.action_currency_form"/>
+        <menuitem name="Book Copies" id="menu_!_copies" parent="menu_1_books" action="action_copies" sequence="40"/>
+        <menuitem name="Book Category" id="menu_1_category" parent="menu_1_books" action="action_category"
+                  sequence="0"/>
+        <menuitem name="Books Received" id="menu_1_received" parent="main_books_menu" action="action_received"
+                  sequence="30"/>
+        <menuitem id="dash_menu" name="Dashboard" parent="main_books_menu" action="open_board_my_dash_action"
+                  sequence="5"/>
+         <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing" action="account.action_move_out_invoice_type"/>
+        <menuitem name="Payment" id="menu_hms_payment" parent="menu_billing" action="account.action_account_payments"/>
+    </data>
+</odoo>
