@@ -41,10 +41,42 @@
                 </form>
             </field>
         </record>
+        <record id="view_hospital_patient_search" model="ir.ui.view">
+            <field name="name">hospital.patient.search</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <search string="Patients">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_birth"/>
+                            <field name="is_minor"/>
+                            <field name="guardian"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="weight"/>
+                            <field name="tag_ids"/>
+                        </group>
+                    </group>
+                    <filter name="male_patients" string="Male" domain="[('gender', '=', 'male')]"/>
+                    <!--                    <separator/>-->
+                    <filter name="female_patients" string="Female" domain="[('gender', '=', 'female')]"/>
+                    <group expand="1" string="Group By">
+                        <filter name="group_by_patient" string="Gender" domain="[]" context="{'group_by': 'gender'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="gender" string="Gender" icon="fa-search" enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
         <record id="action_hospital_patient" model="ir.actions.act_window">
             <field name="name">Patients</field>
             <field name="res_model">hospital.patient</field>
             <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hospital_patient_search"/>
+            <field name="context">{'search_default_male_patient': 1}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
                     Create a patients

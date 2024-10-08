@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="views_hr_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <div>
+                        <h1>
+                            <!-- Explicitly define the label with your custom text -->
+                            <label for="name" class="oe_edit_only">Name</label>
+                        </h1>
+                    </div>
+                    <field name="name" placeholder="Employee's Name" nolabel="1"/>
+                </xpath>
+                <xpath expr="//field[@name='job_title']" position="replace">
+                    <div>
+                        <h1>
+                            <!-- Explicitly define the label with your custom text -->
+                            <label for="job_title" class="oe_edit_only">Identification No</label>
+                        </h1>
+                    </div>
+                    <field name="job_title" placeholder="Identification No" nolabel="1"/>
+                </xpath>
+                <xpath expr="//field[@name='department_id']" position="attributes">
+                    <field name="department" required="True">department</field>
+                </xpath>
+                <field name="work_email" position="after">
+                    <field name="location"/>
+                </field>
+                <!--                    <xpath expr="//notebook" position="inside">-->
+                <!--                        <page string="PUBLIC INFORMATION">-->
+                <!--                            <group>-->
+                <!--                                <field name="write_uid"/>-->
+                <!--                                <field name="create_uid"/>-->
+                <!--                            </group>-->
+                <!--                        </page>-->
+                <!--                    </xpath>-->
+
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <field name="create_uid"/>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook//page[@name='hr_settings']" position="before">
+                    <page string="EXPERIENCE">
+                        <div>
+                            <h2>Academic Experiences</h2>
+                        </div>
+                        <notebook colspan="4">
+                            <page name="experience" string="Academic Experiences">
+                                <control>
+                                    <create name="add_item" string="Add an Item"/>
+                                </control>
+                                <group>
+                                    <group>
+                                        <field name="academic_experience"/>
+                                        <field name="start_date" class="fa-time"/>
+                                        <field name="expire"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="institution" string="Institution">
+                                <group>
+                                    <group>
+                                        <field name="institution"/>
+                                        <field name="institution_location"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="diploma" string="Diploma">
+                                <group>
+                                    <group>
+                                        <field name="diploma"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="study" string="Field of study">
+                                <group>
+                                    <group>
+                                        <field name="field_of_study"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="comment" placeholder="Internal notes..."/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </page>
+                </xpath>
+                <xpath expr="//notebook//page[@name='public']" position="attributes">
+                    <attribute name="string">PUBLIC INFORMATION</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[@name='personal_information']" position="attributes">
+                    <attribute name="string">PERSONAL INFORMATION</attribute>
+                </xpath>
+                <xpath expr="//notebook//page[@name='hr_settings']" position="attributes">
+                    <attribute name="string">HR SETTINGS</attribute>
+                </xpath>
+
+                <field name="location" position="attributes">
+                    <attribute name="required">1</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

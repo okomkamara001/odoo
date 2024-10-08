@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
-
-    <data noupdate="1">
+    <data noupdate="0">
         <record id="library_test_category" model="ir.module.category">
-            <field name="name">Fleet</field>
-            <field name="sequence">17</field>
+            <field name="name">Library</field>
+            <field name="sequence">1</field>
         </record>
+
+        <record id="library_group_user" model="res.groups">
+            <field name="name">Users</field>
+            <field name="category_id" ref="library_management_system.library_test_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">the user will have access to books and borrows.</field>
+        </record>
+
+        <record id="library_group_manager" model="res.groups">
+            <field name="name">Managers</field>
+            <field name="category_id" ref="library_management_system.library_test_category"/>
+            <field name="implied_ids" eval="[(4,ref('library_management_system.library_group_user'))]"/>
+            <field name="comment">the user will have access to books and borrows.</field>
+        </record>
+
+        <record id="library_group_administrator" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="comment">the user will have an access to the library configuration as well as statistic
+                reports.
+            </field>
+            <field name="category_id" ref="library_management_system.library_test_category"/>
+            <field name="implied_ids" eval="[(4, ref('library_group_manager')),
+                (4, ref('mail.group_mail_template_editor'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
     </data>
 </odoo>

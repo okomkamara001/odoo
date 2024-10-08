@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
-    <record model="ir.ui.view" id="view_books_data_tree">
-        <field name="name">view.books.data.tree</field>
-        <field name="model">books.data</field>
-        <field name="arch" type="xml">
-            <tree string="Books">
-                <field name="name"/>
-                <field name="language"/>
-                <field name="description"/>
-                <field name="color" widget="color_picker"/>
-                <field name="price"/>
-                <field name="invoice" optional="hide"/>
-                <field name="version"/>
-                <field name="ispn" optional="hide"/>
-                <!--                <field name="category_ids"/>-->
-                <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
-                <field name="number_of_pages"/>
-                <field name="copy_count"/>
-            </tree>
-        </field>
-    </record>
     <record model="ir.ui.view" id="view_books_data_form">
         <field name="name">view.books.data.form</field>
         <field name="model">books.data</field>
@@ -33,9 +13,14 @@
                             <field name="priority" widget="priority" class="mr_3"/>
                         </h1>
                     </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1 style="color: blue;">
+                            <field name="name" placeholder="Book's Name"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
-                            <field name="name"/>
                             <field name="language"/>
                             <field name="description"/>
                         </group>
@@ -66,6 +51,26 @@
                     </div>
                 </group>
             </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_books_data_tree">
+        <field name="name">view.books.data.tree</field>
+        <field name="model">books.data</field>
+        <field name="arch" type="xml">
+            <tree string="Books">
+                <field name="name"/>
+                <field name="language"/>
+                <field name="description"/>
+                <field name="color" widget="color_picker"/>
+                <field name="price"/>
+                <field name="invoice" optional="hide"/>
+                <field name="version"/>
+                <field name="ispn" optional="hide"/>
+                <!--                <field name="category_ids"/>-->
+                <!--                <field name="author_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+                <field name="number_of_pages"/>
+                <field name="copy_count"/>
+            </tree>
         </field>
     </record>
     <record id="action_book_data" model="ir.actions.act_window">

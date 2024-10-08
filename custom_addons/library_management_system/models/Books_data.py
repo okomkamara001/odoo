@@ -21,6 +21,7 @@ class Books_data(models.Model):
     _name = 'books.data'
     _inherit = ['mail.thread']
     _description = 'books.dat'
+
     # Basic Information
     name = fields.Char(string="Tittle", required=True, tracking=True)
     price = fields.Float(string="Price", tracking=True)

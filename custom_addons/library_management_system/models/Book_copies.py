@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
 from odoo import models, fields, api
+
 '''
 copies with the internal name _name set to 'book.copies'
  and a description _description set to 'books.copies'.
@@ -14,6 +15,7 @@ end_date: A date field that represents the end date of the book copy.
 It is computed based on the start_date and duration fields.
 '''
 
+
 class BookCopies(models.Model):
     _name = 'book.copies'
     _description = 'books.copies'
@@ -24,16 +26,13 @@ class BookCopies(models.Model):
     state = fields.Selection([('lost', 'Lost'),
                               ('borrowed', 'Borrowed'),
                               ('available', 'Available'),
-                              ], default="available", string='state', required=True,readonly=True)
+                              ], default="available", string='state', required=True, readonly=True)
 
     start_date = fields.Datetime(default=fields.Datetime.today)
     end_date = fields.Date(string="End Date", store=True,
                            compute='_get_end_date_', inverse='_set_end_date')
     progress = fields.Integer(string="Progress", compute='_compute_progress')
     place = fields.Char(string="Place")
-
-
-
 
     @api.depends('start_date', 'duration')
     def _get_end_date(self):
@@ -62,9 +61,6 @@ class BookCopies(models.Model):
 
             r.duration = (r.end_date - r.start_date).days + 1
 
-
-
-
     @api.onchange('book_id')
     def _onchange_book_id(self):
         '''
@@ -75,19 +71,17 @@ class BookCopies(models.Model):
         '''
         if self.book_id:
             copy_count = self.search_count([('book_id', '=', self.book_id.id)])
-            self.name = self.book_id.name +' # '+ str(copy_count + 1)
-
-
+            self.name = self.book_id.name + ' # ' + str(copy_count + 1)
 
     @api.depends('state')
     def _compute_progress(self):
         for rec in self:
-            if rec.state =='lost':
+            if rec.state == 'lost':
                 progress = 0
-            elif rec.state =='borrowed':
+            elif rec.state == 'borrowed':
                 progress = 50
             elif rec.state == 'available':
-                progress =100
+                progress = 100
             else:
                 progress = 25
-            rec.progress =progress
+            rec.progress = progress

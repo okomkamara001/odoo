@@ -10,18 +10,23 @@
                 <form>
                     <sheet>
                         <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_author">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"  required="1" placeholder="Author's Name"/>
+                            </h1>
+                        </div>
                         <group>
                             <group>
-                                <field name="name"/>
                                 <field name="email"/>
                                 <field name="phone_number"/>
                                 <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                <field name="gender"/>
                             </group>
                             <group>
                                 <field name="date_of_birth"/>
                                 <field name="age"/>
                                 <field name="salary"/>
-                                <field name="gender"/>
                                 <field name="countries"/>
                             </group>
                         </group>
@@ -48,6 +53,39 @@
                     <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="countries"/>
                 </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_library_author_search">
+            <field name="name">view.library.author.search</field>
+            <field name="model">books.author</field>
+            <field name="arch" type="xml">
+                <search string="Author">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="phone_number"/>
+                            <field name="book_ids"/>
+                        </group>
+                        <group>
+                            <field name="date_of_birth"/>
+                            <field name="age"/>
+                            <field name="salary"/>
+                            <field name="gender"/>
+                            <field name="countries"/>
+                        </group>
+                    </group>
+                    <filter name="male_author" string="Male" domain="[('gender', '=', 'male')]"/>
+                    <!--                    <separator/>-->
+                    <filter name="female_author" string="Female" domain="[('gender', '=', 'female')]"/>
+                    <filter name="author_countries" string="Country" domain="[('countries', '=', 'countries')]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Gender" name="group_by_author_gender" context="{'group_by': 'gender'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="gender" string="Gender" icon="fa-users" enable_counters="1"/>
+                    </searchpanel>
+                </search>
             </field>
         </record>
         <record model="ir.ui.view" id="view_books_author_graph">

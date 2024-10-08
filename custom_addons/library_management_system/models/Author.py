@@ -46,7 +46,7 @@ class Author(models.Model):
     date_of_birth = fields.Date(string="Date Of Birth")
     image = fields.Image(string="Image")
     age = fields.Integer(string="Age", compute='_compute_age')
-    salary = fields.Integer(string="Salary")
+    salary = fields.Integer(string="Salary", ref='base.USD')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')])
     email = fields.Char(string='Email', size=256)
     phone_number = fields.Char(string='Phone Number', size=20)
@@ -58,6 +58,7 @@ class Author(models.Model):
 
     duration = fields.Integer(string="Duration (Days)", help="Duration in days")
     countries = fields.Selection([("sierra leone", "Sierra Leone"), ('Liberia', 'Liberia'), ('nigeria', 'Nigeria'), ('guinea', 'Guinea')], string="Nationality")
+
 
 
 

@@ -5,10 +5,13 @@
         <menuitem name="Library" id="main_books_menu" web_icon="library_management_system,static/description/icon.png"/>
         <menuitem name="Books Information" id="menu_1_books" parent="main_books_menu"/>
         <menuitem name="Books" id="menu_2_information" parent="menu_1_books" action="action_book_data"/>
-        <menuitem name="Configuration" id="menu_1_setting" parent="main_books_menu" sequence="100">
+        <menuitem name="Configuration" id="menu_1_setting" groups="library_management_system.library_group_administrator" parent="main_books_menu" sequence="100">
             <menuitem name="Author" id="menu_1_author" action="action1_author" sequence="0"/>
         </menuitem>
-          <menuitem name="Billing" id="menu_billing" parent="main_books_menu" sequence="80"/>
+          <menuitem name="Billing" id="menu_billing" parent="main_books_menu" sequence="95"/>
+        <menuitem name="Report" id="menu_reporting" parent="main_books_menu" sequence="97"/>
+        <menuitem name="Employees" id="menu_employees" parent="main_books_menu" sequence="90"/>
+        <menuitem name="Department" id="menu_1_department" parent="main_books_menu" sequence="85"/>
         <menuitem name="Borrows" id="menu_2_borrow" parent="main_books_menu" action="action_borrowed" sequence="10"/>
         <menuitem name="Publisher" id="menu_1_publisher" parent="menu_1_setting" action="action2_publisher"
                   sequence="30"/>
@@ -23,5 +26,9 @@
                   sequence="5"/>
          <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing" action="account.action_move_out_invoice_type"/>
         <menuitem name="Payment" id="menu_hms_payment" parent="menu_billing" action="account.action_account_payments"/>
+        <menuitem name="Employees" id="meni_hr_employee" parent="menu_employees" action="hr.open_view_employee_list_my"/>
+        <menuitem name="Department" id="menu_hr_department" parent="menu_1_department" action="hr.hr_department_kanban_action"/>
+        <menuitem name="Skills" id="menu_empployee_skill" parent="menu_reporting" action="hr_skills.hr_employee_skill_report_action"/>
+        <menuitem name="Certifications" id="menu_certificate" parent="menu_reporting" action="hr_skills_survey.hr_employee_certification_report_action"/>
     </data>
 </odoo>

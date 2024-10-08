@@ -9,6 +9,7 @@
                 <field name="reference"/>
                 <field name="patient_id"/>
                 <field name="date_appointment"/>
+                <field name="create_uid" groups="om_hospital.group_hospital_doctors"/>
             </tree>
         </field>
     </record>
@@ -39,6 +40,7 @@
                         </group>
                         <group>
                             <field name="total_qty"/>
+                            <field name="create_uid" groups="om_hospital.group_hospital_doctors"/>
                             <field name="note"/>
                         </group>
                     </group>
@@ -52,15 +54,15 @@
                             </field>
                         </page>
                     </notebook>
-<!--                    <notebook>-->
-<!--                        <page name="Other Info" string="Other Info">-->
-<!--                            <field name="appointment_line_ids">-->
-<!--                                <tree editable="bottom">-->
-<!--                                    <field name="name"/>-->
-<!--                                </tree>-->
-<!--                            </field>-->
-<!--                        </page>-->
-<!--                    </notebook>-->
+                    <!--                    <notebook>-->
+                    <!--                        <page name="Other Info" string="Other Info">-->
+                    <!--                            <field name="appointment_line_ids">-->
+                    <!--                                <tree editable="bottom">-->
+                    <!--                                    <field name="name"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" group="base.group_user"/>
@@ -69,10 +71,29 @@
             </form>
         </field>
     </record>
+
+    <record id="view_hospital_appointment_search" model="ir.ui.view">
+        <field name="name">hospital.appointment.search</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Appointment">
+                <field name="reference" filter_domain="['|',('reference','ilike',self),('patient_id','ilike',self)]" string="Advanced filter"/>
+                <field name="reference"/>
+                <field name="patient_id"/>
+                <group expand="1" string="Group By">
+                    <filter name="group_by_patient" string="Patient" domain="[]" context="{'group_by': 'patient_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="patient_id" string="Patient" icon="fa-users" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
     <record id="action_hospital_appointment" model="ir.actions.act_window">
         <field name="name">Appointments</field>
         <field name="res_model">hospital.appointment</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_hospital_appointment_search"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a Appointments

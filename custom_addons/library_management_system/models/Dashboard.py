@@ -12,9 +12,8 @@ from datetime import datetime
 
 class Dashboard(models.Model):
     _name = 'books.borrows'
-    _description = "Books Dashboard"
-
     _inherit = 'books.borrows'
+    _description = "Books Dashboard"
 #
 #
 
