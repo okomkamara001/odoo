@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <data noupdate="1">
+        <record id="library_test_category" model="ir.module.category">
+            <field name="name">Fleet</field>
+            <field name="sequence">17</field>
+        </record>
+    </data>
+</odoo>
