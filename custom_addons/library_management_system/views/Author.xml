@@ -27,7 +27,7 @@
                                 <field name="date_of_birth"/>
                                 <field name="age"/>
                                 <field name="salary"/>
-                                <field name="countries"/>
+                                <field name="country_id"/>
                             </group>
                         </group>
                         <notebook>
@@ -51,7 +51,7 @@
                     <field name="email"/>
                     <field name="phone_number"/>
                     <field name="book_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                    <field name="countries"/>
+                    <field name="country_id"/>
                 </tree>
             </field>
         </record>
@@ -72,13 +72,13 @@
                             <field name="age"/>
                             <field name="salary"/>
                             <field name="gender"/>
-                            <field name="countries"/>
+                            <field name="country_id"/>
                         </group>
                     </group>
                     <filter name="male_author" string="Male" domain="[('gender', '=', 'male')]"/>
                     <!--                    <separator/>-->
                     <filter name="female_author" string="Female" domain="[('gender', '=', 'female')]"/>
-                    <filter name="author_countries" string="Country" domain="[('countries', '=', 'countries')]"/>
+                    <filter name="author_countries" string="Country" domain="[('country_id', '=', 'country_id')]"/>
                     <group expand="1" string="Group By">
                         <filter string="Gender" name="group_by_author_gender" context="{'group_by': 'gender'}"/>
                     </group>

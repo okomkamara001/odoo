@@ -14,7 +14,7 @@ Install this if you are using the Point of Sale app in Argentina.
     ],
     'countries': ['ar'],
     'data': [
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'assets': {
         'point_of_sale._assets_pos': [

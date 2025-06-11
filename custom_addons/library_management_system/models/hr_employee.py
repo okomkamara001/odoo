@@ -15,3 +15,4 @@ class Employee(models.Model):
     diploma = fields.Char(string="Diploma")
     field_of_study = fields.Char(string="Field of study")
     comment = fields.Text(string="Activities of association")
+

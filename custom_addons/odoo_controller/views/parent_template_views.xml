@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="patient_root_view_form" model="ir.ui.view">
+            <field name="name">patient.root.view.form</field>
+            <field name="model">hospital.system</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="date_of_birth"/>
+                                <field name="gender"/>
+                            </group>
+                            <group>
+                                <field name="partner_id"/>
+                                <field name="notes"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="patient_root_action" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">odoo.controller</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a Patient
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

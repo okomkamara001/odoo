@@ -14,7 +14,7 @@
     "data": [
         "security/ir.model.access.csv",
         "data/ir_model_fields.xml",
-        "views/templates.xml",
+        "views/controller_template.xml",
     ],
     "assets": {
         "web.assets_frontend": [

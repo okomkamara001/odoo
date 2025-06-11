@@ -13,7 +13,7 @@ It allows for comparing products from the wishlist
         'website_sale_wishlist',
     ],
     'data': [
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'assets': {
         'web.assets_frontend': [

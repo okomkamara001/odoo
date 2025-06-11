@@ -9,7 +9,7 @@ Bridge module to make the website e-commerce compatible with the product configu
     'depends': ['website_sale', 'sale_product_configurator'],
     'auto_install': True,
     'data': [
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'demo': [
         'data/demo.xml',

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_hospital_system" model="ir.actions.report">
+            <field name="name">Patients</field>
+            <field name="model">hospital.system</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">hospital_management_system.report_hospital_system</field>
+            <field name="report_file">hospital_management_system.report_hospital_system</field>
+            <field name="binding_model_id" ref="model_hospital_system"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!--     Patient prescription report template -->
+    <template id="patient_prescription_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <center>
+                    <h1>Doctor Prescription</h1>
+                </center>
+                <div>
+                    <strong>Date :</strong>
+                    <span t-esc="date"/>
+                </div>
+                <div>
+                    <strong>Patient's Name :</strong>
+                    <span t-esc="patient_name"/>
+                </div>
+                <div>
+                    <strong>Doctor :</strong>
+                    <span t-esc="doctor_name"/>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr style="text-align:left">
+                            <th>SL.No</th>
+                            <th>Medicine</th>
+                            <th>Intake</th>
+                            <th>Time</th>
+                            <th>Quantity</th>
+                            <th>Before/ After Food</th>
+                        </tr>
+                    </thead>
+                    <t t-set="i" t-value="0"/>
+                    <tbody>
+                        <center>
+                            <tr t-foreach="datas" t-as="line">
+                                <td>
+                                    <t t-set="i" t-value="i + 1"/>
+                                    <span t-esc="i"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['medicine']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['intake']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['time']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['quantity']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="line['note']"/>
+                                </td>
+                            </tr>
+                        </center>
+                    </tbody>
+                </table>
+            </t>
+        </t>
+    </template>
+
+        <!-- Report paper format -->
+        <record id="paperformat_patient" model="report.paperformat">
+            <field name="name">Custom Paper</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">55</field>
+            <field name="page_width">30</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">1.00</field>
+            <field name="margin_bottom">1.00</field>
+            <field name="margin_left">0.00</field>
+            <field name="margin_right">1.00</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">125</field>
+        </record>
+
+        <record id="patient_report_action" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">hospital.system</field>
+        </record>
+
+        <template id="report_hospital_system">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <h2>Patient Name:<t t-esc="o.name"/>
+                    </h2>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -13,7 +13,7 @@
         "views/fetchmail_server_views.xml",
         "views/ir_mail_server_views.xml",
         "views/res_config_settings_views.xml",
-        "views/templates.xml",
+        "views/controller_template.xml",
     ],
     "license": "LGPL-3",
 }

@@ -10,7 +10,7 @@
     ],
     'data': [
         'views/portal.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'installable': True,
     'auto_install': True,

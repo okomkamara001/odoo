@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data noupdate="1">
+        <record id="patient_booking_rule_doctor" model="ir.rule">
+            <field name="name">Patient Booking Rule Doctor</field>
+            <field name="model_id" ref="model_patient_booking"/>
+            <field name="domain_force">[('doctor_id.doctor_id.user_id','=',user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.base_hospital_management_group_doctor'))]"/>
+        </record>
+        <record id="patient_booking_rule_company" model="ir.rule">
+            <field name="name">Patient Booking Rule Company</field>
+            <field name="model_id" ref="model_patient_booking"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids + [false])]</field>
+        </record>
+    </data>
+</odoo>

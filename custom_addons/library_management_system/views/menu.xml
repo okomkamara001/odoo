@@ -26,7 +26,7 @@
                   sequence="5"/>
          <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing" action="account.action_move_out_invoice_type"/>
         <menuitem name="Payment" id="menu_hms_payment" parent="menu_billing" action="account.action_account_payments"/>
-        <menuitem name="Employees" id="meni_hr_employee" parent="menu_employees" action="hr.open_view_employee_list_my"/>
+        <menuitem name="Employees" id="meni_hr_employee" parent="menu_employees" action="hr_employees_action"/>
         <menuitem name="Department" id="menu_hr_department" parent="menu_1_department" action="hr.hr_department_kanban_action"/>
         <menuitem name="Skills" id="menu_empployee_skill" parent="menu_reporting" action="hr_skills.hr_employee_skill_report_action"/>
         <menuitem name="Certifications" id="menu_certificate" parent="menu_reporting" action="hr_skills_survey.hr_employee_certification_report_action"/>

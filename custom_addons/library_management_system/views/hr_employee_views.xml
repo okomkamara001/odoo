@@ -2,28 +2,19 @@
 
 <odoo>
     <data>
-        <record id="views_hr_employee_form" model="ir.ui.view">
-            <field name="name">hr.employee.form</field>
+        <record id="view_hr_employee_action_form" model="ir.ui.view">
+            <field name="name">ir.actions.employee.form</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="replace">
-                    <div>
-                        <h1>
-                            <!-- Explicitly define the label with your custom text -->
-                            <label for="name" class="oe_edit_only">Name</label>
-                        </h1>
-                    </div>
-                    <field name="name" placeholder="Employee's Name" nolabel="1"/>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="placeholder">Name</attribute>
                 </xpath>
-                <xpath expr="//field[@name='job_title']" position="replace">
-                    <div>
-                        <h1>
-                            <!-- Explicitly define the label with your custom text -->
-                            <label for="job_title" class="oe_edit_only">Identification No</label>
-                        </h1>
-                    </div>
-                    <field name="job_title" placeholder="Identification No" nolabel="1"/>
+                <xpath expr="//field[@name='job_title']" position="attributes">
+                    <attribute name="placeholder">Identification No</attribute>
+                </xpath>
+                <xpath expr="//field[@name='category_ids']" position="attributes">
+                    <attribute name="placeholder">e.g Part Time</attribute>
                 </xpath>
                 <xpath expr="//field[@name='department_id']" position="attributes">
                     <field name="department" required="True">department</field>
@@ -31,20 +22,6 @@
                 <field name="work_email" position="after">
                     <field name="location"/>
                 </field>
-                <!--                    <xpath expr="//notebook" position="inside">-->
-                <!--                        <page string="PUBLIC INFORMATION">-->
-                <!--                            <group>-->
-                <!--                                <field name="write_uid"/>-->
-                <!--                                <field name="create_uid"/>-->
-                <!--                            </group>-->
-                <!--                        </page>-->
-                <!--                    </xpath>-->
-
-                <xpath expr="//notebook" position="before">
-                    <group>
-                        <field name="create_uid"/>
-                    </group>
-                </xpath>
                 <xpath expr="//notebook//page[@name='hr_settings']" position="before">
                     <page string="EXPERIENCE">
                         <div>
@@ -102,11 +79,12 @@
                 <xpath expr="//notebook//page[@name='hr_settings']" position="attributes">
                     <attribute name="string">HR SETTINGS</attribute>
                 </xpath>
-
-                <field name="location" position="attributes">
-                    <attribute name="required">1</attribute>
-                </field>
             </field>
+        </record>
+        <record id="hr_employees_action" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
         </record>
     </data>
 </odoo>

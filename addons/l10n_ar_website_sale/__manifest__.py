@@ -13,7 +13,7 @@
     ],
     'data': [
         'data/ir_model_fields.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'demo': [
         'demo/website_demo.xml',

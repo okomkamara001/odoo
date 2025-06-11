@@ -29,7 +29,7 @@
         'views/product_tag_views.xml',
         'views/product_views.xml',
         'views/sale_order_views.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
         'views/snippets/snippets.xml',
         'views/snippets/s_add_to_cart.xml',
         'views/snippets/s_dynamic_snippet_products.xml',

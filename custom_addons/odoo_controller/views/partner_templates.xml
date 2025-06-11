@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <template id="sales_order">
+            <t t-call="website.layout">
+                <t t-set="title">Sales Order</t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <h2>SALES ORDER # <t t-esc="saleorder.name"/> </h2>
+                        <t t-esc="saleorder.partner_id.name"/>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

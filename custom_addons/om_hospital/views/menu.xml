@@ -2,25 +2,79 @@
 
 <odoo>
     <data>
-        <menuitem name="Hospital Management" id="menu_root_hospital" web_icon="om_hospital,static/description/icon.png"/>
-        <menuitem name="Front Desk" id="menu_root_frontdesk" parent="menu_root_hospital"/>
+        <menuitem name="Hospital Management" id="menu_root_hospital"
+                  web_icon="om_hospital,static/description/icon.png"/>
+        <menuitem name="Patients" id="menu_root_frontdesk" parent="menu_root_hospital"/>
         <menuitem name="Employees" id="menu_hr_employees" parent="menu_root_hospital"/>
         <menuitem name="Billing" id="menu_billing" parent="menu_root_hospital"/>
         <menuitem name="Patients" id="menu_patients" parent="menu_root_frontdesk" action="action_hospital_patient"/>
         <menuitem name="View_Patients" id="menu_patients_readonly" parent="menu_root_frontdesk"
                   action="action_hospital_readonly_patient"/>
-        <menuitem name="Appointments" id="menu_appointment" parent="menu_root_frontdesk"
-                  action="action_hospital_appointment"/>
-        <menuitem name="Appointment Line" id="menu_appointment_line" parent="menu_root_frontdesk"
+        <menuitem name="Appointments" id="patient_menu_appointment" action="action_hospital_appointment"
+                  parent="menu_root_hospital"/>
+        <menuitem name="Appointment" id="menu_appointment_line" sequence="1" parent="patient_menu_appointment"
                   action="action_hospital_appointment_line"/>
-        <menuitem name="Configuration" id="menu_configuration" groups="om_hospital.group_hospital_doctors" parent="menu_root_hospital" sequence="100"/>
+        <menuitem id="hospital_outpatient_menu" name="Outpatient" sequence="2" parent="patient_menu_appointment"
+                  action="hospital_outpatient_action"/>
+        <menuitem id="hospital_inpatient_menu" name="Inpatient" parent="patient_menu_appointment"
+                  action="hospital_inpatient_action" sequence="8"/>
+        <menuitem id="hospital_vaccination_menu" name="Vaccination" sequence="25" parent="patient_menu_appointment"
+                  action="hospital_vaccination_action"/>
+        <menuitem id="appointment_menu_doctor" name="Doctor" parent="patient_menu_appointment" sequence="8"/>
+        <menuitem id="inpatient_surgery_menu" name="Surgery" parent="appointment_menu_doctor"
+                  action="inpatient_surgery_action" sequence="10"/>
+        <menuitem id="doctor_allocation_menu" name="Allocation" parent="appointment_menu_doctor"
+                  action="doctor_allocation_action" sequence="5"/>
+        <menuitem name="Configuration" id="menu_configuration" parent="menu_root_hospital" sequence="100"/>
+        <menuitem id="hospital_degree_menu" name="Degree" sequence="9" parent="menu_configuration"
+                  action="hospital_degree_action"/>
+        <menuitem id="doctor_specialization_menu" name="Specialization" sequence="10" parent="menu_configuration"
+                  action="doctor_specialization_action"/>
         <menuitem name="Tag" id="menu_patient_tag" parent="menu_configuration" action="action_patient_tag"
                   sequence="100"/>
         <menuitem name="Staff" id="hospital_menu_staff" parent="menu_configuration"/>
-        <menuitem name="Employee" id="menu_1_employee" parent="menu_hr_employees" action="hr.open_view_employee_list_my"/>
-        <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing" action="account.action_move_out_invoice_type"/>
+        <menuitem name="Room Facility" id="menu_room_facility" parent="menu_configuration" sequence="20"
+                  action="room_facility_action"/>
+        <menuitem id="product_template_menu_medicine" name="Medicine" sequence="1" parent="menu_configuration"
+                  action="product_template_action_medicine"/>
+        <!--     Vaccine Menu -->
+        <menuitem id="product_template_menu_vaccine" name="Vaccine" sequence="2" parent="menu_configuration"
+                  action="product_template_action_vaccine"/>
+        <menuitem id="medicine_brand_menu" name="Medicine Brand" sequence="3" parent="menu_configuration"
+                  action="medicine_brand_action"/>
+        <menuitem id="hospital_insurance_menu" name="Insurance" sequence="6" parent="menu_configuration"
+                  action="hospital_insurance_action"/>
+        <menuitem id="contra_indication_menu" name="Contract Indications" parent="menu_configuration"
+                  action="contra_indication_action" sequence="8"/>
+        <menuitem id="blood_bank_menu" name="Blood Bank" parent="menu_configuration" action="blood_bank_action"
+                  sequence="7"/>
+        <menuitem id="hr_employee_menu" parent="menu_hr_employees" name="Staff" action="hr_employee_action"
+                  sequence="0"/>
+        <menuitem name="Invoice" id="menu_hms_invoice" parent="menu_billing"
+                  action="account.action_move_out_invoice_type"/>
         <menuitem name="Payment" id="menu_hms_payment" parent="menu_billing" action="account.action_account_payments"/>
-        <menuitem name="Infrastructure" id="hospital_menu_infrastructure" sequence="90"/>
-        <menuitem name="Laboratory" id="hospital_menu_lab" sequence="80"/>
+        <menuitem name="Infrastructure" id="hospital_menu_infrastructure" parent="menu_root_hospital" sequence="90"/>
+        <menuitem id="hospital_laboratory_menu" name="Laboratory" parent="hospital_menu_infrastructure" sequence="2"
+                  action="hospital_laboratory_action"/>
+        <menuitem id="hospital_bed_menu" name="Bed" parent="hospital_menu_infrastructure" action="hospital_bed_action"
+                  sequence="5"/>
+        <menuitem id="hospital_ward_menu" name="Ward" parent="hospital_menu_infrastructure"
+                  action="hospital_ward_action"
+                  sequence="4"/>
+        <menuitem id="hospital_pharmacy_menu" name="Pharmacy" parent="hospital_menu_infrastructure"
+                  action="hospital_pharmacy_action" sequence="1"/>
+        <menuitem id="hospital_building_menu" name="Block" parent="hospital_menu_infrastructure"
+                  action="hospital_building_action" sequence="2"/>
+        <menuitem name="Room" id="patient_room_menu" parent="hospital_menu_infrastructure" action="action_patient_room"
+                  sequence="3"/>
+        <menuitem id="hospital_report" name="Report" parent="menu_root_hospital" sequence="6"/>
+        <menuitem name="Laboratory" id="hospital_menu_laboratory" parent="menu_root_hospital" sequence="80"/>
+        <menuitem id="lab_test_menu" name="Lab Test" parent="hospital_menu_laboratory" sequence="4"
+                  action="lab_test_action"/>
+        <menuitem id="lab_test_line_menu" name="Patient Test" parent="hospital_menu_laboratory" sequence="1"
+                  action="lab_test_line_action"/>
+        <menuitem id="patient_lab_test_menu" name="All Tests" parent="hospital_menu_laboratory" sequence="1"
+                  action="patient_lab_test_action"/>
+        <!--        <menuitem id="reporting_menuitem" name="Reporting" parent="menu_root_hospital"  action="reports_action" sequence="15" groups="base.group_no_one"/>-->
     </data>
 </odoo>

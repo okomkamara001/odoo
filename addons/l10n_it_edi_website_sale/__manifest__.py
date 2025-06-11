@@ -11,7 +11,7 @@ Contains features for Italian eCommerce eInvoicing
     """,
     'depends': ['l10n_it_edi', 'website_sale'],
     'data': [
-        'views/templates.xml',
+        'views/controller_template.xml',
         'data/data.xml'
     ],
     'installable': True,

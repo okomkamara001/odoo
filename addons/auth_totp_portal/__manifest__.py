@@ -5,7 +5,7 @@
     'auto_install': True,
     'data': [
         'security/security.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'assets': {
         'web.assets_frontend': [

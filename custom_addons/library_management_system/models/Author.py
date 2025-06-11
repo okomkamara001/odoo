@@ -57,7 +57,7 @@ class Author(models.Model):
                            compute='_get_end_date_', inverse='_set_end_date')
 
     duration = fields.Integer(string="Duration (Days)", help="Duration in days")
-    countries = fields.Selection([("sierra leone", "Sierra Leone"), ('Liberia', 'Liberia'), ('nigeria', 'Nigeria'), ('guinea', 'Guinea')], string="Nationality")
+    country_id = fields.Many2one('res.country', string='Country', help="Nationality of the author")
 
 
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+       <menuitem  name="Hospital" id="hospital_menu" web_icon="hospital_management_system,static/description/icon.png"/>
+        <menuitem name="records" id="hospital_menu_record" parent="hospital_menu"/>
+        <menuitem name="Patient" id="patient_root_menu" parent="hospital_menu_record" action="patient_root_action"/>
+        <menuitem name="Reporting" id="patient_reporting_menu" parent="hospital_menu" action="patient_report_action"/>
+    </data>
+</odoo>

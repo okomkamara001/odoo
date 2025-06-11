@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>'
+    <data>
+        <!--        <record id="odoo_controller_index" model="ir.ui.view">-->
+        <!--            <field name="name">Index Page</field>-->
+        <!--            <field name="type">qweb</field>-->
+        <!--            <field name="key">odoo_controller.index</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <t t-name="odoo_controller.index">-->
+        <!--                    <div>-->
+        <!--                        <h1>Welcome to Odoo</h1>-->
+        <!--                    </div>-->
+        <!--                </t>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <template id="index_page" name="Patients">
+            <t t-call="website.layout">
+                <t t-set="title">Sales Orders</t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <br/>
+                        <t t-foreach="sales" t-as="sale">
+                            <p>
+                                <t t-esc="sale.name"/>
+                                <t t-esc="sale.partner_id.name"/>
+                            </p>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

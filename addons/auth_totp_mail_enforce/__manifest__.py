@@ -14,7 +14,7 @@ and encourage users to configure their 2FA using an authenticator app.
         'data/mail_template_data.xml',
         'security/ir.model.access.csv',
         'views/res_config_settings_views.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
     ],
     'license': 'LGPL-3',
 }

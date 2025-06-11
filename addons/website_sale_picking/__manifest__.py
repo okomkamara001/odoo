@@ -15,7 +15,7 @@ Allows customers to pay for their orders at a shop, instead of paying online.
         'data/website_sale_picking_data.xml',
 
         'views/res_config_settings_views.xml',
-        'views/templates.xml',
+        'views/controller_template.xml',
         'views/delivery_view.xml'
     ],
     'demo': [
